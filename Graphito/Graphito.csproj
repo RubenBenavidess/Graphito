@@ -60,6 +60,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shape.cs" />
     <Compile Include="ShapeDrawer.cs" />
+    <Compile Include="Toolbar.cs" />
+    <Compile Include="Toolbar.Designer.cs">
+      <DependentUpon>Toolbar.cs</DependentUpon>
+    </Compile>
     <Compile Include="ToolFactory.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -70,6 +74,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Toolbar.resx">
+      <DependentUpon>Toolbar.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
