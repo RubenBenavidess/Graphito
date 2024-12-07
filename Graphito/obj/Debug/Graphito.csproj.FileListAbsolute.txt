@@ -1,0 +1,9 @@
+D:\ESPE\QUINTO\comp_grafica\p1\Graphito\bin\Debug\Graphito.exe.config
+D:\ESPE\QUINTO\comp_grafica\p1\Graphito\bin\Debug\Graphito.exe
+D:\ESPE\QUINTO\comp_grafica\p1\Graphito\bin\Debug\Graphito.pdb
+D:\ESPE\QUINTO\comp_grafica\p1\Graphito\obj\Debug\Graphito.csproj.AssemblyReference.cache
+D:\ESPE\QUINTO\comp_grafica\p1\Graphito\obj\Debug\Graphito.Properties.Resources.resources
+D:\ESPE\QUINTO\comp_grafica\p1\Graphito\obj\Debug\Graphito.csproj.GenerateResource.cache
+D:\ESPE\QUINTO\comp_grafica\p1\Graphito\obj\Debug\Graphito.csproj.CoreCompileInputs.cache
+D:\ESPE\QUINTO\comp_grafica\p1\Graphito\obj\Debug\Graphito.exe
+D:\ESPE\QUINTO\comp_grafica\p1\Graphito\obj\Debug\Graphito.pdb
