@@ -46,7 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Canvas.cs" />
+    <Compile Include="Canvas.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Eraser.cs" />
     <Compile Include="FileManager.cs" />
     <Compile Include="FillingBucket.cs" />
