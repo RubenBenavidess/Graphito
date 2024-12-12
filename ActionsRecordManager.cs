@@ -10,27 +10,37 @@ namespace Graphito
 {
     internal static class ActionsRecordManager
     {
-        private static Stack<Bitmap> UndoStack = new Stack<Bitmap>();
-        private static Stack<Bitmap> RedoStack = new Stack<Bitmap>();
+        public static Stack<Bitmap> UndoStack { set; get; } = new Stack<Bitmap>();
+        public static Stack<Bitmap> RedoStack = new Stack<Bitmap>();
 
         public static void PushActionUndo(Bitmap bmp)
         {
             UndoStack.Push(bmp);
         }
+
+        public static void PushActionRedo(Bitmap bmp)
+        {
+            RedoStack.Push(bmp);
+        }
         public static Bitmap Undo()
         {
-            if(UndoStack.Count() > 1)
+            Bitmap returningBmp = null;
+
+            MessageBox.Show(UndoStack.Count.ToString());
+
+            if (UndoStack.Count > 0)
             {
-                RedoStack.Push(UndoStack.First());
-                return UndoStack.Pop();
-                
+                RedoStack.Push(UndoStack.Peek());
+                returningBmp = UndoStack.Pop();   
             }
-            return null;
+
+            return returningBmp;
             
         }
+
         public static Bitmap Redo()
         {
-            if (RedoStack.Count() > 1)
+            if (RedoStack.Count > 0)
             {
                 UndoStack.Push(RedoStack.First());
                 return RedoStack.Pop();

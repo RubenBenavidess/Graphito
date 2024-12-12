@@ -23,10 +23,10 @@ namespace Graphito
             {
                 g.Clear(Color.White);
             }
-
             this.MouseDown += CanvasMouseDown;
             this.MouseMove += CanvasMouseMove;
             this.MouseUp += CanvasMouseUp;
+
             IsDrawing = false;
         }
 
@@ -58,7 +58,7 @@ namespace Graphito
 
         public void LoadBitmap(Bitmap btmp)
         {
-            if(bmp != null)
+            if(btmp != null)
             {
                 bmp = btmp;
                 RefreshImage();
@@ -76,6 +76,12 @@ namespace Graphito
             Main.CurrentTool?.Use(bmp, new Point(e.X, e.Y), click);
             RefreshImage();
 
+            ActionsRecordManager.PushActionUndo((Bitmap)this.bmp.Clone());
+            if (ActionsRecordManager.RedoStack.Count > 0)
+            {
+                ActionsRecordManager.RedoStack.Pop();
+            }
+            
         }
 
         public void CanvasMouseMove(object sender, MouseEventArgs e) {
@@ -90,7 +96,12 @@ namespace Graphito
         {
             IsDrawing = false;
             Main.CurrentTool?.Reset();
-            ActionsRecordManager.PushActionUndo((Bitmap)this.bmp.Clone());
+
+            ActionsRecordManager.PushActionRedo((Bitmap)this.bmp.Clone());
+        }
+
+        public void OnMouseLeave(object sender, EventArgs e)
+        {
         }
     }
 }
