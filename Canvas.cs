@@ -13,12 +13,14 @@ namespace Graphito
     internal class Canvas : PictureBox
     {
         public Bitmap bmp {  get; set; }
-        public bool IsDrawing;
+        public Bitmap bmpPreview { get; set; }
+        public bool IsDrawing, IsDrawingTool;
         int click;
 
         public Canvas()
         {
             bmp = new Bitmap(1280, 720);
+            bmpPreview = new Bitmap(1280, 720);
             using (Graphics g = Graphics.FromImage(bmp))
             {
                 g.Clear(Color.White);
@@ -46,6 +48,11 @@ namespace Graphito
             Image = bmp;
         }
         
+        public void ShowPreview()
+        {
+            Image = bmpPreview;
+        }
+
         public void Renew()
         {
             bmp = new Bitmap(1280, 720);
@@ -72,24 +79,52 @@ namespace Graphito
             else
                 click = 1;
 
+            if (Main.CurrentTool.ToString() != "Graphito.ShapeDrawer")
+            {
+                IsDrawingTool = false;
+                Main.CurrentTool?.Use(bmp, new Point(e.X, e.Y), click);
+                RefreshImage();
+            }
+            else
+            {
+                IsDrawingTool = true;
+                Main.CurrentTool?.Use(bmpPreview, new Point(e.X, e.Y), click);
+                ShowPreview();
+            }
+
             IsDrawing = true;
-            Main.CurrentTool?.Use(bmp, new Point(e.X, e.Y), click);
-            RefreshImage();
+            
 
         }
 
         public void CanvasMouseMove(object sender, MouseEventArgs e) {
+           
             if(IsDrawing)
             {
-                Main.CurrentTool?.Use(bmp, new Point(e.X, e.Y), click);
-                RefreshImage();
+                if (!IsDrawingTool)
+                {
+                    Main.CurrentTool?.Use(bmp, new Point(e.X, e.Y), click);
+                    RefreshImage();
+                }
+                else
+                {
+                    bmpPreview = (Bitmap)bmp.Clone();
+                    Main.CurrentTool?.Use(bmpPreview, new Point(e.X, e.Y), click);
+                    ShowPreview();
+                }
             }
         }
 
         public void CanvasMouseUp(object sender, MouseEventArgs e)
         {
             IsDrawing = false;
+            if (IsDrawingTool)
+            {
+                bmp = (Bitmap)bmpPreview.Clone();
+                IsDrawingTool &= !IsDrawing;
+            }
             Main.CurrentTool?.Reset();
+            RefreshImage();
             ActionsRecordManager.PushActionUndo((Bitmap)this.bmp.Clone());
         }
     }
