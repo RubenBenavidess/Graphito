@@ -87,6 +87,7 @@ namespace Graphito
             }
             else
             {
+                bmpPreview = (Bitmap)bmp.Clone(); 
                 IsDrawingTool = true;
                 Main.CurrentTool?.Use(bmpPreview, new Point(e.X, e.Y), click);
                 ShowPreview();
@@ -121,7 +122,7 @@ namespace Graphito
             if (IsDrawingTool)
             {
                 bmp = (Bitmap)bmpPreview.Clone();
-                IsDrawingTool &= !IsDrawing;
+                IsDrawingTool = false;
             }
             Main.CurrentTool?.Reset();
             RefreshImage();
