@@ -106,5 +106,29 @@ namespace Graphito
         {
             Main.CurrentTool = ToolFactory.CreateTool(toolName, PrimaryColor, SecondaryColor, ToolWidth);
         }
+
+        private void btnRectangleTool_Click(object sender, EventArgs e)
+        {
+            toolName = "shape_rectangle";
+            Main.CurrentTool = ToolFactory.CreateTool(toolName, PrimaryColor, SecondaryColor, ToolWidth);
+            resetButtonsBg();
+            btnRectangleTool.BackColor = Color.FromArgb(100, 184, 189);
+        }
+
+        private void btnEllipseTool_Click(object sender, EventArgs e)
+        {
+            toolName = "shape_ellipse";
+            Main.CurrentTool = ToolFactory.CreateTool(toolName, PrimaryColor, SecondaryColor, ToolWidth);
+            resetButtonsBg();
+            btnEllipseTool.BackColor = Color.FromArgb(100, 184, 189);
+        }
+
+        private void btnCircleTool_Click(object sender, EventArgs e)
+        {
+            toolName = "shape_circle";
+            Main.CurrentTool = ToolFactory.CreateTool(toolName, PrimaryColor, SecondaryColor, ToolWidth);
+            resetButtonsBg();
+            btnCircleTool.BackColor = Color.FromArgb(100, 184, 189);
+        }
     }
 }
