@@ -26,12 +26,20 @@ namespace Graphito
         {
             Bitmap returningBmp = null;
 
-            MessageBox.Show(UndoStack.Count.ToString());
-
             if (UndoStack.Count > 0)
             {
-                RedoStack.Push(UndoStack.Peek());
-                returningBmp = UndoStack.Pop();   
+                Bitmap aux = UndoStack.Pop();
+                RedoStack.Push(aux);
+                if(UndoStack.Count > 0)
+                {
+                    returningBmp = UndoStack.Peek();
+                }
+                else
+                {
+                    returningBmp = null;
+                }
+                
+                
             }
 
             return returningBmp;
@@ -40,12 +48,15 @@ namespace Graphito
 
         public static Bitmap Redo()
         {
+            Bitmap returningBmp = null;
+
             if (RedoStack.Count > 0)
             {
-                UndoStack.Push(RedoStack.First());
-                return RedoStack.Pop();
+                Bitmap aux = RedoStack.Pop();
+                UndoStack.Push(aux);
+                returningBmp = aux;
             }
-            return null;
+            return returningBmp;
 
         }
     }

@@ -30,6 +30,8 @@ namespace Graphito
             this.MouseUp += CanvasMouseUp;
 
             IsDrawing = false;
+
+            ActionsRecordManager.PushActionUndo((Bitmap)this.bmp.Clone());
         }
 
         public Canvas(int width, int height)
@@ -95,13 +97,6 @@ namespace Graphito
 
             IsDrawing = true;
             
-
-            ActionsRecordManager.PushActionUndo((Bitmap)this.bmp.Clone());
-            if (ActionsRecordManager.RedoStack.Count > 0)
-            {
-                ActionsRecordManager.RedoStack.Pop();
-            }
-            
         }
 
         public void CanvasMouseMove(object sender, MouseEventArgs e) {
@@ -132,9 +127,8 @@ namespace Graphito
             }
             Main.CurrentTool?.Reset();
             RefreshImage();
-            ActionsRecordManager.PushActionUndo((Bitmap)this.bmp.Clone());
 
-            ActionsRecordManager.PushActionRedo((Bitmap)this.bmp.Clone());
+            ActionsRecordManager.PushActionUndo((Bitmap)this.bmp.Clone());
         }
 
         public void OnMouseLeave(object sender, EventArgs e)
