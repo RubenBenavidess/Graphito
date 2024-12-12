@@ -46,32 +46,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ActionsRecordManager.cs" />
-    <Compile Include="Canvas.cs">
+    <Compile Include="utils\ActionsRecordManager.cs" />
+    <Compile Include="componentes\Canvas.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="CanvasController.cs" />
-    <Compile Include="FileManager.cs" />
-    <Compile Include="FillTool.cs" />
-    <Compile Include="ITool.cs" />
+    <Compile Include="utils\CanvasController.cs" />
+    <Compile Include="utils\FileManager.cs" />
+    <Compile Include="controller\FillTool.cs" />
+    <Compile Include="controller\ITool.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
-    <Compile Include="PenTool.cs" />
+    <Compile Include="controller\PenTool.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Shape.cs" />
-    <Compile Include="ShapeDrawer.cs" />
-    <Compile Include="ToolBar.cs">
+    <Compile Include="controller\Shape.cs" />
+    <Compile Include="controller\ShapeDrawer.cs" />
+    <Compile Include="componentes\ToolBar.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ToolBar.Designer.cs">
+    <Compile Include="componentes\ToolBar.Designer.cs">
       <DependentUpon>ToolBar.cs</DependentUpon>
     </Compile>
-    <Compile Include="ToolFactory.cs" />
+    <Compile Include="controller\ToolFactory.cs" />
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
@@ -84,7 +84,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="ToolBar.resx">
+    <EmbeddedResource Include="componentes\ToolBar.resx">
       <DependentUpon>ToolBar.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
@@ -100,5 +100,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
