@@ -116,6 +116,7 @@ namespace Graphito
             }
             Main.CurrentTool?.Reset();
             RefreshImage();
+
         }
 
         public void OnMouseLeave(object sender, EventArgs e)

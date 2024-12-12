@@ -109,18 +109,20 @@
             // picCanvas
             // 
             this.picCanvas.bmp = ((System.Drawing.Bitmap)(resources.GetObject("picCanvas.bmp")));
+            this.picCanvas.bmpPreview = ((System.Drawing.Bitmap)(resources.GetObject("picCanvas.bmpPreview")));
             this.picCanvas.Image = ((System.Drawing.Image)(resources.GetObject("picCanvas.Image")));
             this.picCanvas.Location = new System.Drawing.Point(36, 168);
             this.picCanvas.Name = "picCanvas";
             this.picCanvas.Size = new System.Drawing.Size(1280, 720);
             this.picCanvas.TabIndex = 4;
             this.picCanvas.TabStop = false;
+            this.picCanvas.MouseUp += new System.Windows.Forms.MouseEventHandler(this.picCanvas_MouseUp);
             // 
             // toolBar1
             // 
             this.toolBar1.Dock = System.Windows.Forms.DockStyle.Top;
             this.toolBar1.Location = new System.Drawing.Point(0, 25);
-            this.toolBar1.Margin = new System.Windows.Forms.Padding(2);
+            this.toolBar1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.toolBar1.Name = "toolBar1";
             this.toolBar1.Size = new System.Drawing.Size(1424, 137);
             this.toolBar1.TabIndex = 3;
@@ -138,6 +140,7 @@
             this.Name = "Main";
             this.Text = "Main";
             this.Load += new System.EventHandler(this.Main_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Main_KeyDown);
             this.Resize += new System.EventHandler(this.Main_Resize);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

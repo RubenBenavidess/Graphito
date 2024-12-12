@@ -68,19 +68,32 @@ namespace Graphito
             picCanvas.Renew();
         }
 
-        private void trackBar1_Scroll(object sender, EventArgs e)
-        {
-
-        }
-
         private void strItemUndo_Click(object sender, EventArgs e)
         {
-            picCanvas.LoadBitmap(ActionsRecordManager.Undo(picCanvas.bmp));
+            picCanvas.LoadBitmap(ActionsRecordManager.Undo((Bitmap)picCanvas.bmp.Clone()));
         }
 
         private void strItemRedo_Click(object sender, EventArgs e)
         {
-            picCanvas.LoadBitmap(ActionsRecordManager.Redo(picCanvas.bmp));
+            picCanvas.LoadBitmap(ActionsRecordManager.Redo((Bitmap)picCanvas.bmp.Clone()));
+        }
+
+        private void Main_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.Control && e.KeyCode == Keys.Z)
+            {
+                picCanvas.LoadBitmap(ActionsRecordManager.Undo((Bitmap)picCanvas.bmp.Clone()));
+            }
+            if (e.Control && e.KeyCode == Keys.Y)
+            {
+                picCanvas.LoadBitmap(ActionsRecordManager.Redo((Bitmap)picCanvas.bmp.Clone()));
+            }
+        }
+
+        private void picCanvas_MouseUp(object sender, MouseEventArgs e)
+        {
+            this.ActiveControl = null;
+            this.Focus();
         }
     }
 }
