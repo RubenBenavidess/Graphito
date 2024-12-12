@@ -65,6 +65,7 @@ namespace Graphito
             btnRectangleTool.BackColor = bg;
             btnEllipseTool.BackColor = bg;
             btnCircleTool.BackColor = bg;
+            btnLineTool.BackColor = bg;
         }
 
         private void btnPrimaryColor_Click(object sender, EventArgs e)
