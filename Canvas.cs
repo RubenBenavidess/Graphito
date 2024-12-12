@@ -35,7 +35,7 @@ namespace Graphito
         public Canvas(int width, int height)
         {
             this.bmp = new Bitmap(width, height);
-            this.Image = this.bmp;
+            this.Image = this.bmp;  
             using(Graphics g = Graphics.FromImage(bmp))
             {
                 g.Clear(Color.White);
