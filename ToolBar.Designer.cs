@@ -43,9 +43,8 @@
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.btnPrimaryColor = new System.Windows.Forms.Button();
             this.btnSecondaryColor = new System.Windows.Forms.Button();
-            this.btnColorPicker = new System.Windows.Forms.Button();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnLineTool = new System.Windows.Forms.PictureBox();
             this.btnRectangleTool = new System.Windows.Forms.PictureBox();
             this.btnEllipseTool = new System.Windows.Forms.PictureBox();
             this.btnCircleTool = new System.Windows.Forms.PictureBox();
@@ -53,6 +52,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.btnColorPicker = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnFill)).BeginInit();
@@ -63,11 +63,12 @@
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnLineTool)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnRectangleTool)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnEllipseTool)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCircleTool)).BeginInit();
             this.tableLayoutPanel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnColorPicker)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -284,47 +285,40 @@
             this.btnSecondaryColor.UseVisualStyleBackColor = false;
             this.btnSecondaryColor.Click += new System.EventHandler(this.btnSecondaryColor_Click);
             // 
-            // btnColorPicker
-            // 
-            this.btnColorPicker.Location = new System.Drawing.Point(35, 2);
-            this.btnColorPicker.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnColorPicker.Name = "btnColorPicker";
-            this.btnColorPicker.Size = new System.Drawing.Size(162, 112);
-            this.btnColorPicker.TabIndex = 1;
-            this.btnColorPicker.UseVisualStyleBackColor = true;
-            this.btnColorPicker.Click += new System.EventHandler(this.btnColorPicker_Click);
-            // 
             // tableLayoutPanel5
             // 
+            this.tableLayoutPanel5.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.tableLayoutPanel5.ColumnCount = 6;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 8F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 144F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 144F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 144F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 144F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 15F));
-            this.tableLayoutPanel5.Controls.Add(this.pictureBox1, 1, 0);
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 8F));
+            this.tableLayoutPanel5.Controls.Add(this.btnLineTool, 1, 0);
             this.tableLayoutPanel5.Controls.Add(this.btnRectangleTool, 2, 0);
             this.tableLayoutPanel5.Controls.Add(this.btnEllipseTool, 3, 0);
             this.tableLayoutPanel5.Controls.Add(this.btnCircleTool, 4, 0);
-            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(579, 2);
             this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(598, 120);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(598, 119);
             this.tableLayoutPanel5.TabIndex = 7;
             // 
-            // pictureBox1
+            // btnLineTool
             // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Location = new System.Drawing.Point(11, 2);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(138, 116);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.btnLineTool.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnLineTool.Image = ((System.Drawing.Image)(resources.GetObject("btnLineTool.Image")));
+            this.btnLineTool.Location = new System.Drawing.Point(11, 2);
+            this.btnLineTool.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnLineTool.Name = "btnLineTool";
+            this.btnLineTool.Size = new System.Drawing.Size(138, 115);
+            this.btnLineTool.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnLineTool.TabIndex = 0;
+            this.btnLineTool.TabStop = false;
+            this.btnLineTool.Click += new System.EventHandler(this.btnLineTool_Click);
             // 
             // btnRectangleTool
             // 
@@ -333,7 +327,7 @@
             this.btnRectangleTool.Location = new System.Drawing.Point(155, 2);
             this.btnRectangleTool.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnRectangleTool.Name = "btnRectangleTool";
-            this.btnRectangleTool.Size = new System.Drawing.Size(138, 116);
+            this.btnRectangleTool.Size = new System.Drawing.Size(138, 115);
             this.btnRectangleTool.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnRectangleTool.TabIndex = 1;
             this.btnRectangleTool.TabStop = false;
@@ -346,7 +340,7 @@
             this.btnEllipseTool.Location = new System.Drawing.Point(299, 2);
             this.btnEllipseTool.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnEllipseTool.Name = "btnEllipseTool";
-            this.btnEllipseTool.Size = new System.Drawing.Size(138, 116);
+            this.btnEllipseTool.Size = new System.Drawing.Size(138, 115);
             this.btnEllipseTool.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnEllipseTool.TabIndex = 2;
             this.btnEllipseTool.TabStop = false;
@@ -359,7 +353,7 @@
             this.btnCircleTool.Location = new System.Drawing.Point(443, 2);
             this.btnCircleTool.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCircleTool.Name = "btnCircleTool";
-            this.btnCircleTool.Size = new System.Drawing.Size(138, 116);
+            this.btnCircleTool.Size = new System.Drawing.Size(138, 115);
             this.btnCircleTool.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnCircleTool.TabIndex = 3;
             this.btnCircleTool.TabStop = false;
@@ -425,6 +419,18 @@
             this.label4.Text = "Lápiz";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // btnColorPicker
+            // 
+            this.btnColorPicker.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnColorPicker.Image = ((System.Drawing.Image)(resources.GetObject("btnColorPicker.Image")));
+            this.btnColorPicker.Location = new System.Drawing.Point(35, 3);
+            this.btnColorPicker.Name = "btnColorPicker";
+            this.btnColorPicker.Size = new System.Drawing.Size(162, 112);
+            this.btnColorPicker.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnColorPicker.TabIndex = 1;
+            this.btnColorPicker.TabStop = false;
+            this.btnColorPicker.Click += new System.EventHandler(this.btnColorPicker_Click);
+            // 
             // ToolBar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -445,12 +451,13 @@
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnLineTool)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnRectangleTool)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnEllipseTool)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCircleTool)).EndInit();
             this.tableLayoutPanel6.ResumeLayout(false);
             this.tableLayoutPanel6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnColorPicker)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -470,9 +477,8 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.Button btnPrimaryColor;
         private System.Windows.Forms.Button btnSecondaryColor;
-        private System.Windows.Forms.Button btnColorPicker;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox btnLineTool;
         private System.Windows.Forms.PictureBox btnRectangleTool;
         private System.Windows.Forms.PictureBox btnEllipseTool;
         private System.Windows.Forms.PictureBox btnCircleTool;
@@ -481,5 +487,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.PictureBox btnColorPicker;
     }
 }

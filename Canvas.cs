@@ -30,8 +30,6 @@ namespace Graphito
             this.MouseUp += CanvasMouseUp;
 
             IsDrawing = false;
-
-            ActionsRecordManager.PushActionUndo((Bitmap)this.bmp.Clone());
         }
 
         public Canvas(int width, int height)
@@ -76,7 +74,10 @@ namespace Graphito
         }
 
         public void CanvasMouseDown(object sender, MouseEventArgs e) {
-            if(e.Button == MouseButtons.Left)
+
+            ActionsRecordManager.PushActionUndo((Bitmap)this.bmp.Clone());
+
+            if (e.Button == MouseButtons.Left)
                 click = -1;
             else
                 click = 1;
@@ -96,7 +97,6 @@ namespace Graphito
             }
 
             IsDrawing = true;
-            
         }
 
         public void CanvasMouseMove(object sender, MouseEventArgs e) {
@@ -127,8 +127,6 @@ namespace Graphito
             }
             Main.CurrentTool?.Reset();
             RefreshImage();
-
-            ActionsRecordManager.PushActionUndo((Bitmap)this.bmp.Clone());
         }
 
         public void OnMouseLeave(object sender, EventArgs e)

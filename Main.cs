@@ -75,21 +75,12 @@ namespace Graphito
 
         private void strItemUndo_Click(object sender, EventArgs e)
         {
-            picCanvas.LoadBitmap(ActionsRecordManager.Undo());
+            picCanvas.LoadBitmap(ActionsRecordManager.Undo(picCanvas.bmp));
         }
 
         private void strItemRedo_Click(object sender, EventArgs e)
         {
-            picCanvas.LoadBitmap(ActionsRecordManager.Redo());
-        }
-
-        private void btntest_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void btnTest_Click_1(object sender, EventArgs e)
-        {
-            
+            picCanvas.LoadBitmap(ActionsRecordManager.Redo(picCanvas.bmp));
         }
     }
 }

@@ -33,6 +33,9 @@ namespace Graphito
                 case "circle":
                     DrawAction = UseCircle;
                     break;
+                case "line":
+                    DrawAction = UseLine;
+                    break;
                 default:
                     throw new ArgumentException("Shape not supported");
             }
@@ -41,6 +44,23 @@ namespace Graphito
         public void Use(Bitmap bmp, Point point, int click)
         {
             DrawAction(bmp, point, click);
+        }
+
+        private void UseLine(Bitmap bmp, Point point, int click)
+        {
+            if (StartPoint == null)
+            {
+                StartPoint = point;
+                return;
+            }
+
+            Color color = click > 0 ? SecondaryColor : PrimaryColor;
+
+            using (Graphics g = Graphics.FromImage(bmp))
+            {
+                Pen pen = new Pen(color, Width);
+                g.DrawLine(pen, StartPoint.Value.X, StartPoint.Value.Y, point.X, point.Y);
+            }
         }
 
         private void UseCircle(Bitmap bmp, Point point, int click)

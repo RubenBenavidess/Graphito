@@ -21,6 +21,11 @@ namespace Graphito
         public ToolBar()
         {
             InitializeComponent();
+            this.Paint += new PaintEventHandler(ToolBar_Paint);
+        }
+        private void ToolBar_Paint(object sender, PaintEventArgs e) 
+        { 
+            ControlPaint.DrawBorder(e.Graphics, tableLayoutPanel5.ClientRectangle, Color.White, ButtonBorderStyle.Solid); 
         }
 
         private void btnFill_Click(object sender, EventArgs e)
@@ -34,8 +39,8 @@ namespace Graphito
 
         private void btnEraser_Click(object sender, EventArgs e)
         {
-            Main.CurrentTool = ToolFactory.CreateTool("eraser", Color.White, Color.White, ToolWidth);
             toolName = "eraser";
+            Main.CurrentTool = ToolFactory.CreateTool("eraser", Color.White, Color.White, ToolWidth);
             resetButtonsBg();
             btnEraser.BackColor = Color.FromArgb(100, 184, 189);
 
@@ -129,6 +134,14 @@ namespace Graphito
             Main.CurrentTool = ToolFactory.CreateTool(toolName, PrimaryColor, SecondaryColor, ToolWidth);
             resetButtonsBg();
             btnCircleTool.BackColor = Color.FromArgb(100, 184, 189);
+        }
+
+        private void btnLineTool_Click(object sender, EventArgs e)
+        {
+            toolName = "shape_line";
+            Main.CurrentTool = ToolFactory.CreateTool(toolName, PrimaryColor, SecondaryColor, ToolWidth);
+            resetButtonsBg();
+            btnLineTool.BackColor = Color.FromArgb(100, 184, 189);
         }
     }
 }
