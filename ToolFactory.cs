@@ -7,11 +7,22 @@ using System.Threading.Tasks;
 
 namespace Graphito
 {
-    internal class ToolFactory
+    internal static class ToolFactory
     {
-        public static void createTool(int toolIndex, Color color, int width, String type)
+        public static ITool CreateTool(String toolName, Color primary, Color secondary, int width = 1, String shape = "")
         {
-            //to do: implement method
+            switch (toolName) {
+                case "pen":
+                    return new PenTool(primary, secondary, width);
+                case "eraser":
+                    return new PenTool(primary, secondary, width);
+                case "fill":
+                    return new FillTool(primary, secondary);
+                case "shape":
+                    //TODO
+                default:
+                    return null;
+            }
         }
     }
 }

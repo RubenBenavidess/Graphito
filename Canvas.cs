@@ -13,36 +13,84 @@ namespace Graphito
     internal class Canvas : PictureBox
     {
         public Bitmap bmp {  get; set; }
+        public bool IsDrawing;
+        int click;
 
-        public Canvas(Bitmap bmp)
+        public Canvas()
         {
-            this.bmp = bmp;
+            bmp = new Bitmap(1280, 720);
+            using (Graphics g = Graphics.FromImage(bmp))
+            {
+                g.Clear(Color.White);
+            }
+
+            this.MouseDown += CanvasMouseDown;
+            this.MouseMove += CanvasMouseMove;
+            this.MouseUp += CanvasMouseUp;
+            IsDrawing = false;
         }
 
-        public void Refresh()
+        public Canvas(int width, int height)
         {
-            this.Image = bmp;
+            this.bmp = new Bitmap(width, height);
+            this.Image = this.bmp;
+            using(Graphics g = Graphics.FromImage(bmp))
+            {
+                g.Clear(Color.White);
+            }
+            RefreshImage();
+        }
+
+        public void RefreshImage()
+        {
+            Image = bmp;
         }
         
-        public void LoadBitmap(Bitmap bmp)
+        public void Renew()
+        {
+            bmp = new Bitmap(1280, 720);
+            using (Graphics g = Graphics.FromImage(bmp))
+            {
+                g.Clear(Color.White);
+            }
+            RefreshImage();
+        }
+
+        public void LoadBitmap(Bitmap btmp)
         {
             if(bmp != null)
             {
-                this.bmp = bmp;
+                bmp = btmp;
+                RefreshImage();
+            }
+            
+        }
+
+        public void CanvasMouseDown(object sender, MouseEventArgs e) {
+            if(e.Button == MouseButtons.Left)
+                click = -1;
+            else
+                click = 1;
+
+            IsDrawing = true;
+            Main.CurrentTool?.Use(bmp, new Point(e.X, e.Y), click);
+            RefreshImage();
+
+        }
+
+        public void CanvasMouseMove(object sender, MouseEventArgs e) {
+            if(IsDrawing)
+            {
+                Main.CurrentTool?.Use(bmp, new Point(e.X, e.Y), click);
+                RefreshImage();
             }
         }
 
-        public void MouseDown(object sender, MouseEventArgs e) {
-            //Main.currentTool.use(this.bmp, new Point(e.X, e.Y))
+        public void CanvasMouseUp(object sender, MouseEventArgs e)
+        {
+            IsDrawing = false;
+            Main.CurrentTool?.Reset();
+            ActionsRecordManager.PushActionUndo((Bitmap)this.bmp.Clone());
         }
-
-        public void MouseUp(object sender, MouseEventArgs e) {
-            //Main.currentTool.use(this.bmp, new Point(e.X, e.Y))
-        }
-
-        public void MouseMove(object sender, MouseEventArgs e) {
-            //Main.currentTool.use(this.bmp, new Point(e.X, e.Y))
-        }
-
     }
 }
